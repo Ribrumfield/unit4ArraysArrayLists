@@ -22,7 +22,7 @@ public class Array_Op
        
         for (double value : x )
         {
-        System.out.println(value);
+            System.out.println(value);
         }
     }
 }
