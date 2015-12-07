@@ -4,7 +4,6 @@ public class CharMatrix
 {
   // Instance variables:
   private char grid [] [];
-  private char newfillGrid [] [];
   // Constructor: creates a grid with dimensions rows, cols,
   // and fills it with spaces
   public CharMatrix(int rows, int cols)
@@ -23,12 +22,12 @@ public class CharMatrix
   // and fills it with the fill  character
   public CharMatrix(int rows, int cols, char fill)
   {
-    this.newfillGrid = new char[rows] [cols];
-    for(int i =0; i < newfillGrid.length; i++)
+    this.grid = new char[rows] [cols];
+    for(int i =0; i < grid.length; i++)
     {
-        for(int j = 0; j < newfillGrid[i].length; j++)
+        for(int j = 0; j < grid[i].length; j++)
         {
-           newfillGrid[i][j] = fill;
+           grid[i][j] = fill;
         }
     }
   }
@@ -36,12 +35,8 @@ public class CharMatrix
   // Returns the number of rows in grid
   public int numRows()
   {
-    int rowcount = 0;
-    for(int i =0; i < grid.length; i++)
-    {
-         rowcount ++;
-    }
-    return rowcount;
+    int numRows = this.grid.length;
+    return numRows;
   }
 
   // Returns the number of columns in grid
@@ -90,11 +85,11 @@ public class CharMatrix
   // lower right corner of the rectangle.
   public void fillRect(int row0, int col0, int row1, int col1, char fill)
   {
-      for(int i =0; i < grid.length; i++)
+      for(int i =row0; i <= row1; i++)
     {
-        for(int j = 0; j < grid[i].length; j++)
+        for(int j = col0; j <= col1; j++)
         {
-            
+            this.grid[i][j] = fill;
         }
     }
   }
@@ -104,7 +99,13 @@ public class CharMatrix
   // lower right corner of the rectangle.
   public void clearRect(int row0, int col0, int row1, int col1)
   {
-    
+     for(int i =row0; i <= row1; i++)
+    {
+        for(int j = col0; j <= col1; j++)
+        {
+            this.grid[i][j] = ' ';
+        }
+    }
   }
 
   // Returns the count of all non-space characters in row 
@@ -113,7 +114,7 @@ public class CharMatrix
     int rowspace = 0;
     for(int i =0; i < grid.length; i++)
     {
-        if( grid[row][i] == ' ')
+        if( grid[row][i] != ' ')
         {
             rowspace++;
         }
@@ -125,11 +126,15 @@ public class CharMatrix
   public int countInCol(int col)
   {
      int colspace = 0;
-    for(int i =0; i < grid.length; i++)
-    {
-        if( grid[col][i] == ' ')
+     for (int i = 0; i<grid.length;i++)
+     {
+         
+        for(int j =0; j < grid[i].length; j++)
         {
-            colspace++;
+            if( grid[i][col] != ' ')
+            {
+                colspace++;
+            }
         }
     }
     return colspace;
