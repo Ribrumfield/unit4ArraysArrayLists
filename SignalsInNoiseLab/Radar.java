@@ -39,8 +39,8 @@ public class Radar
         //
         // !!! add code here !!!
         //
-        
-        
+        currentScan = new boolean [rows][cols]; 
+        accumulator = new int [rows][cols];
         // randomly set the location of the monster (can be explicity set through the
         //  setMonsterLocation method for the unit test
         monsterLocationRow = (int)(Math.random() * rows);
@@ -62,12 +62,30 @@ public class Radar
         //    3. inject noise into the grid
         //    4. update the accumulator 2D array based on the state of the currentScan 2D array
         //    5. increment the numScans instance variable
-        
-        
+                
         //
         // !!! add code here !!!
         //
         
+        //step 1
+        for (int i = 0; i < accumulator.length; i++)
+        {
+            for ( int j = 0; j <currentScan.length; j++)
+            {
+                currentScan[i][j] = false;
+            }
+        }
+        
+        //step2
+        
+        
+        //step3
+        
+        
+        //step4
+        
+        
+        //step5
         
     }
 
@@ -170,7 +188,17 @@ public class Radar
         //
         // !!! add code here !!!
         //
-        
+        for( int i = 0; i< currentScan.length; i++)
+        {
+            for(int j = 0; j< currentScan.length; j++)
+            {
+                double num = Math.random();
+                if (num <= this.noiseFraction)
+                {
+                    currentScan[i][j] = true;
+                }
+            }
+        }
         
     }
     
