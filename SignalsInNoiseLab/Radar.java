@@ -39,31 +39,15 @@ public class Radar
         //
         // !!! add code here !!!
         //
-        Scanner in = new Scanner (System.in );
-        System.out.println("would you like to define where the monster starts?");
-        String answer = in.next();
         
-        if( answer.equals( "y") )
-        {
-            Scanner i = new Scanner(System.in);
-            System.out.println("Please enter the row number you would like the monster to be on");
-            int monsterLocationRow = i.nextInt();
-            
-            Scanner j = new Scanner(System.in);
-            System.out.println("Please enter the colomn number you would like the monster to be on");
-            int monsterLocationCol = j.nextInt();
-            
-            setMonsterLocation(monsterLocationRow,monsterLocationCol);
-        }
         currentScan = new boolean [rows][cols]; 
         accumulator = new int [rows][cols];
         // randomly set the location of the monster (can be explicity set through the
         //  setMonsterLocation method for the unit test
-        if( answer.equals("n"))
-        {
-            monsterLocationRow = (int)(Math.random() * rows);
-            monsterLocationCol = (int)(Math.random() * cols);
-        }
+        
+        monsterLocationRow = (int)(Math.random() * rows);
+        monsterLocationCol = (int)(Math.random() * cols);
+        
         noiseFraction = 0.05;
         numScans= 0;
     }

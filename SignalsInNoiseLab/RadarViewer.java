@@ -20,7 +20,22 @@ public class RadarViewer
         final int COLS = 100;
         Radar radar = new Radar(ROWS, COLS);
         radar.setNoiseFraction(0.10);
+        Scanner in = new Scanner (System.in );
+        System.out.println("would you like to define where the monster starts?");
+        String answer = in.next();
         
+        if( answer.equals( "y") )
+        {
+            Scanner i = new Scanner(System.in);
+            System.out.println("Please enter the row number you would like the monster to be on");
+            int monsterLocationRow = i.nextInt();
+            
+            Scanner j = new Scanner(System.in);
+            System.out.println("Please enter the colomn number you would like the monster to be on");
+            int monsterLocationCol = j.nextInt();
+            
+            radar.setMonsterLocation(monsterLocationRow,monsterLocationCol);
+        }
         
         radar.scan();
         

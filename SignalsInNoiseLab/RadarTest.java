@@ -45,5 +45,33 @@ public class RadarTest
     public void tearDown()
     {
     }
+    @Test
+    public void creatObject()
+    {
+        Radar radar = new Radar (7,10);
+        radar.setMonsterLocation(6,8);
+        for (int i = 0; i < 100; i++)
+        {
+            radar.scan();
+        }
+        
+        radar.getAccumulatedDetection(6,8);
+        assertEquals(7, radar.getNumRows());
+        assertEquals(10, radar.getNumCols());
+    }
+    @Test
+    public void creatObject2()
+    {
+        Radar radar = new Radar (6,20);
+        radar.setMonsterLocation(3,6);
+        for (int i = 0; i < 100; i++)
+        {
+            radar.scan();
+        }
+        
+        radar.getAccumulatedDetection(3,6);
+        assertEquals(6, radar.getNumRows());
+        assertEquals(20, radar.getNumCols());
+    }
 
 }
